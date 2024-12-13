@@ -13,8 +13,17 @@ class Args:
             exit(1)
 
 def transcribe(to_simplify, file_output_dir):
-    cmd = f"cargo run --release --bin transcriber-bin -- --input {to_simplify} --output write --write-path {file_output_dir}"
-    os.system(cmd)
+    build_cmd = f"cargo build --release"
+    os.system(build_cmd)
+
+    # windows sets ext to .exe, otherwise none
+    if sys.platform == "win32":
+        ext = ".exe"
+    else:
+        ext = ""
+
+    run_cmd = f".\\target\\release\\transcriber-bin{ext} --input {to_simplify} --output write --write-path {file_output_dir}"
+    os.system(run_cmd)
 
 def main():
     args = Args()
