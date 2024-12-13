@@ -29,8 +29,8 @@ enum RawArgsOutput {
 impl Display for RawArgsOutput {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         match self {
-            RawArgsOutput::PrintJson => write!(f, "Print json"),
-            RawArgsOutput::Write => write!(f, "Write to files in cwd")
+            RawArgsOutput::PrintJson => write!(f, "print-json"),
+            RawArgsOutput::Write => write!(f, "write")
         }
     }
 }
