@@ -1,5 +1,5 @@
 use std::io::Write;
-
+use regex::Regex;
 use crate::args::ArgsOutput;
 use crate::error::Error;
 
@@ -22,9 +22,14 @@ fn main() -> Result<(), Error> {
             for transcribed_res in transcribed_files {
                 match transcribed_res {
                     Ok(transcribed) => {
-                        let file_name = transcribed.filename_with_extension();
-                        let file_path = dir.join(file_name);
-                        let file = std::fs::File::create(file_path)?;
+                        let filename = transcribed.filename_with_extension();
+                        let filename = filename.to_string_lossy();
+                        let filename = filename.as_ref().to_string();
+                        let filename: String = transcriber::util::clean_filename(filename);
+
+                        let filepath = dir.join(filename);
+                        println!("Writing file: {}", filepath.display());
+                        let file = std::fs::File::create(filepath)?;
                         let mut writer = std::io::BufWriter::new(file);
                         writer.write_all(transcribed.contents().as_ref())?;
                     },
