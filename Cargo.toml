@@ -1,0 +1,11 @@
+[package]
+name = "transcriber-bin"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+transcriber = { git = "https://github.com/nickrallison/transcriber.git" }
+
+clap = { version = "4.5.23", features = ["derive"] }
+thiserror = "2.0.6"
+serde_json = "1.0.133"
