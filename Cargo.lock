@@ -1580,7 +1580,7 @@ dependencies = [
 [[package]]
 name = "transcriber"
 version = "0.1.0"
-source = "git+https://github.com/nickrallison/transcriber.git#413eecfe4e620c05b54e34fe475158126107f9fb"
+source = "git+https://github.com/nickrallison/transcriber.git#77f4632deeac569446625705e507053881c35fdd"
 dependencies = [
  "fancy-regex",
  "glob",
